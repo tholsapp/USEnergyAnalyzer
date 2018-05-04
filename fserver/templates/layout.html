@@ -1,0 +1,63 @@
+{% extends "bootstrap/base.html" %}
+
+<html>
+	{% block head %}
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- JQuery Library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<!-- Chart.min.js Library -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+		<!--  Bootstrap Minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<!-- Include Styling -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+		{% if title %}
+		<title>{{ title }} - US Energy and Consensus</title>
+		{% else %}
+		<title>US Energy and Consensus</title>
+		{% endif %}
+
+	</head>
+	{% endblock %}
+
+	{% block body %}
+		<div class="container">
+	<body>
+		<div class="navbar">
+			{% block navbar %}
+			{% include 'navbar.html' %}
+			{% endblock %}
+		</div>
+
+		<!-- Page Content -->
+		<div id="content">
+		    <div class="col">
+			{% with messages = get_flashed_messages() %}
+			    {% if messages %}
+			        {% for message in messages %}
+			            <div class="alert alert-warning alert-block alert-error fade in">
+			            	<button class="close" data-dismiss="alert">&times;</button>
+			              	{{ message }}
+			            </div>
+			        {% endfor %}
+			    {% endif %}
+		   	{% endwith %}
+
+			{% block content %}{% endblock %}
+			<div>
+		</div>
+		<!-- Footer -->
+		<div class="footer text-center">
+			<hr>
+			<p>CS160 - 2018 --  
+			<a href="https://github.com/tholsapp/CS160Project">  GITHUB</a></p>
+			</hr>
+		</div>
+	</body>
+	<div>
+	{% endblock %}
+</html>

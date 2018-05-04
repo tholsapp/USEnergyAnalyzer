@@ -1,0 +1,20 @@
+
+{% block navbar %}
+
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<ul class="nav navbar-nav">
+			<li><a href="{{ url_for('home') }}">Home</a></li>
+			<li><a href="{{ url_for('total_analysis') }}">Totals</a></li>
+			<li><a href="{{ url_for('coal_analysis') }}">Coal</a></li>
+			<li><a href="{{ url_for('electricity_analysis') }}">Electricity</a></li>
+			<li><a href="{{ url_for('geothermal_analysis') }}">Geothermal</a></li>
+			<li><a href="{{ url_for('natural_gas_analysis') }}">Natural Gas</a></li>
+			<li><a href="{{ url_for('fossil_analysis') }}">Fossil Fuels</a></li>
+			<li><a href="{{ url_for('hydro_analysis') }}"> Hydropower</a></li>
+			<li><a href="{{ url_for('lpg_analysis') }}">LPG</a></li>
+		</ul>
+	</div>
+</nav>
+
+{% endblock %}

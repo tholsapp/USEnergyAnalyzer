@@ -1,0 +1,202 @@
+
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="page-header text-center">
+<h1>Total Energy Usage in the United States</h1>
+</div>
+
+  <div class="btn-group" data-toggle="buttons">
+    <button class="btn btn-primary" type="button" id="2010">2010
+    </button>
+    <button class="btn btn-primary" type="button" id="2011">2011
+    </button>
+    <button class="btn btn-primary" type="button" id="2012">2012
+    </button>
+    <button class="btn btn-primary" type="button" id="2013">2013
+    </button>
+    <button class="btn btn-primary" type="button" id="2014">2014
+    </button>
+  </div>
+
+<!-- bar chart canvas element -->
+   <canvas id="totalChart" width="900" height="600">
+   </canvas>
+
+  <p id="caption">The chart is displaying the total energy expendeture</p>
+
+  <script type="text/javascript">
+  // Global parameters:
+  // do not resize the chart canvas when its container does (keep at 600x400px)
+  Chart.defaults.global.responsive = false;
+  // get weeksForecastChart canvas by id
+  var ctx = document.getElementById("totalChart").getContext("2d");
+
+  // energy consumtion data
+  var c_data_2010 = [{% for tc in c_total_2010 %}
+                          {{ tc }},
+                    {% endfor %}]
+  var c_data_2011 = [{% for tc in c_total_2011 %}
+                          {{ tc }},
+                    {% endfor %}]
+  var c_data_2012 = [{% for tc in c_total_2012 %}
+                          {{ tc }},
+                    {% endfor %}]
+  var c_data_2013 = [{% for tc in c_total_2013 %}
+                          {{ tc }},
+                    {% endfor %}]
+  var c_data_2014 = [{% for tc in c_total_2014 %}
+                          {{ tc }},
+                    {% endfor %}]
+  // energy production data 
+  var p_data_2010 = [{% for tc in p_total_2010 %}
+                          {{ tc }},
+                    {% endfor %}]
+  var p_data_2011 = [{% for tc in p_total_2011 %}
+                          {{ tc }},
+                    {% endfor %}]
+  var p_data_2012 = [{% for tc in p_total_2012 %}
+                          {{ tc }},
+                    {% endfor %}]
+  var p_data_2013 = [{% for tc in p_total_2013 %}
+                          {{ tc }},
+                    {% endfor %}]
+  var p_data_2014 = [{% for tc in p_total_2014 %}
+                          {{ tc }},
+                    {% endfor %}]
+
+  // define the chart data
+  var chartData = {
+    labels : [{% for state in states %}
+               "{{ state }}",
+              {% endfor %}],
+    datasets : [{
+        label: 'Total Consumtion',
+        fill: true,
+        lineTension: 0.1,
+        backgroundColor: "rgba(75,192,192,0.6)",
+        borderColor: "rgba(75,192,192,1)",
+        borderCapStyle: 'butt',
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: 'miter',
+        pointBorderColor: "rgba(75,192,192,1)",
+        pointBackgroundColor: "#fff",
+        pointBorderWidth: 5,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: "rgba(75,192,192,1)",
+        pointHoverBorderColor: "rgba(220,220,220,1)",
+        pointHoverBorderWidth: 2,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data : c_data_2010,
+        spanGaps: false
+        
+    },
+    {
+        label: 'Total Production',
+        fill: true,
+        lineTension: 0.1,
+        backgroundColor: "rgba(192,75,75,0.6)",
+        borderColor: "rgba(192,75,75,1)",
+        borderCapStyle: 'butt',
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: 'miter',
+        pointBorderColor: "rgba(192,75,75,1)",
+        pointBackgroundColor: "#fff",
+        pointBorderWidth: 5,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: "rgba(192,75,75,1)",
+        pointHoverBorderColor: "rgba(220,220,220,1)",
+        pointHoverBorderWidth: 2,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data : p_data_2010,
+        spanGaps: false
+        
+    }],
+    options: {
+      scaleShowValues: true,
+        scales: {
+          yAxes: [{
+            ticks: {
+            }
+          }],
+          xAxes: [{
+            barPercentage: 0,
+            categoryPercentage: 0,
+            ticks: {
+              min: 0,
+              max: 51,
+              stepSize: 1,
+              autoSkip: false
+            }
+          }]
+        }
+      }
+  };
+
+  // create the chart using the chart canvas
+  var chart = new Chart(ctx, {
+    type: 'bar',
+    data: chartData,
+  });
+
+  $('#2010').on('click', function(event) {
+    event.preventDefault(); // To prevent following the link (optional)
+    chartData.datasets[0].data = c_data_2010;
+    chartData.datasets[1].data = p_data_2010;
+    chart.destroy();
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: chartData,
+    });
+  });
+
+  $('#2011').on('click', function(event) {
+    event.preventDefault(); // To prevent following the link (optional)
+    chartData.datasets[0].data = c_data_2011;
+    chartData.datasets[1].data = p_data_2011;
+    chart.destroy();
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: chartData,
+    });
+  });
+
+  $('#2012').on('click', function(event) {
+    event.preventDefault(); // To prevent following the link (optional)
+    chartData.datasets[0].data = c_data_2012;
+    chartData.datasets[1].data = p_data_2012;
+    chart.destroy();
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: chartData,
+    });
+  });
+  $('#2013').on('click', function(event) {
+    event.preventDefault(); // To prevent following the link (optional)
+    chartData.datasets[0].data = c_data_2013;
+    chartData.datasets[1].data = p_data_2013;
+    chart.destroy();
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: chartData,
+    });
+  });
+  $('#2014').on('click', function(event) {
+    event.preventDefault(); // To prevent following the link (optional)
+    chartData.datasets[0].data = c_data_2014;
+    chartData.datasets[1].data = p_data_2014;
+    chart.destroy();
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: chartData,
+    });
+  });
+  </script>
+
+{% endblock %}
