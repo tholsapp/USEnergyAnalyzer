@@ -22,7 +22,6 @@ energy_cols = [
   'CoalE2010','CoalE2011','CoalE2012','CoalE2013','CoalE2014',
   'CoalPrice2010','CoalPrice2011', 'CoalPrice2012','CoalPrice2013','CoalPrice2014',
   'ElecC2010','ElecC2011','ElecC2012','ElecC2013','ElecC2014',
-  'ElecP2010','ElecP2011','ElecP2012','ElecP2013','ElecP2014',
   'ElecE2010','ElecE2011','ElecE2012','ElecE2013','ElecE2014',
   'ElecPrice2010','ElecPrice2011', 'ElecPrice2012','ElecPrice2013','ElecPrice2014',
   'FossFuelC2010','FossFuelC2011', 'FossFuelC2012','FossFuelC2013','FossFuelC2014',
@@ -74,6 +73,18 @@ def get_total_coal(year):
   elif year == 2014:
     return EData.CoalC2014.tolist()[1:-2]
 
+def get_total_coal_cost(year):
+  if year == 2010:
+    return EData.CoalPrice2010.tolist()[1:-2]
+  elif year == 2011:
+    return EData.CoalPrice2011.tolist()[1:-2]
+  elif year == 2012:
+    return EData.CoalPrice2012.tolist()[1:-2]
+  elif year == 2013:
+    return EData.CoalPrice2013.tolist()[1:-2]
+  elif year == 2014:
+    return EData.CoalPrice2014.tolist()[1:-2]
+
 def get_total_electricity(year):
   if year == 2010:
     return EData.ElecC2010.tolist()[1:-2]
@@ -86,6 +97,19 @@ def get_total_electricity(year):
   elif year == 2014:
     return EData.ElecC2014.tolist()[1:-2]
 
+def get_total_electric_cost(year):
+  if year == 2010:
+    print EData.ElecPrice2010.tolist()[1:-2]
+    return EData.ElecPrice2010.tolist()[1:-2]
+  elif year == 2011:
+    return EData.ElecPrice2011.tolist()[1:-2]
+  elif year == 2012:
+    return EData.ElecPrice2012.tolist()[1:-2]
+  elif year == 2013:
+    return EData.ElecPrice2013.tolist()[1:-2]
+  elif year == 2014:
+    return EData.ElecPrice2014.tolist()[1:-2]
+
 def get_total_fossil_fuel(year):
   if year == 2010:
     return EData.FossFuelC2010.tolist()[1:-2]
@@ -97,6 +121,7 @@ def get_total_fossil_fuel(year):
     return EData.FossFuelC2013.tolist()[1:-2]
   elif year == 2014:
     return EData.FossFuelC2014.tolist()[1:-2]
+
 
 def get_total_geothermal(year):
   if year == 2010:

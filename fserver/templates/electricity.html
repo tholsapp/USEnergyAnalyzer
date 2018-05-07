@@ -23,17 +23,21 @@
 
 
   <!-- bar chart canvas element -->
-   <canvas id="chart" width="900" height="400">
-   </canvas>
+  <canvas id="chart" width="900" height="400"> </canvas>
+  <p class="text-center" id="caption">The chart is displaying the total elecitricity usage per person</p>
 
-  <p id="caption">The chart is displaying the total elecitricity usage per person</p>
+
+  <canvas id="costChart" width="900" height="400"> </canvas>
+  <p class="text-center" id="caption">The chart is displaying the total elecitricity cost</p>
 
   <script type="text/javascript">
   // Global parameters:
   // do not resize the chart canvas when its container does (keep at 600x400px)
   Chart.defaults.global.responsive = false;
   // get weeksForecastChart canvas by id
-  var ctx = document.getElementById("chart").getContext("2d");
+  var ctx1 = document.getElementById("chart").getContext("2d");
+  var ctx2 = document.getElementById("costChart").getContext("2d");
+
   var electricity_2010_data = [{% for tc in total_electricity_2010 %}
                                  {{ tc }},
                                {% endfor %}]
@@ -47,6 +51,21 @@
                                  {{ tc }},
                                 {% endfor %}]
   var electricity_2014_data = [{% for tc in total_electricity_2014 %}
+                                 {{ tc }},
+                                {% endfor %}]
+  var electricity_cost_2010_data = [{% for tc in total_electricity_cost_2010 %}
+                                 {{ tc }},
+                               {% endfor %}]
+  var electricity_cost_2011_data = [{% for tc in total_electricity_cost_2011 %}
+                                  {{ tc }},
+                                {% endfor %}]
+  var electricity_cost_2012_data = [{% for tc in total_electricity_cost_2012 %}
+                                 {{ tc }},
+                               {% endfor %}]
+  var electricity_cost_2013_data = [{% for tc in total_electricity_cost_2013 %}
+                                 {{ tc }},
+                                {% endfor %}]
+  var electricity_cost_2014_data = [{% for tc in total_electricity_cost_2014 %}
                                  {{ tc }},
                                 {% endfor %}]
   // define the chart data
@@ -98,19 +117,80 @@
       }
   };
 
+    // define the chart data
+  var costChartData = {
+    labels : [{% for state in states %}
+               "{{ state }}",
+              {% endfor %}],
+    datasets : [{
+        label: 'Electricity Price',
+        fill: true,
+        lineTension: 0.1,
+        backgroundColor: "rgba(75,192,192,0.4)",
+        borderColor: "rgba(75,192,192,1)",
+        borderCapStyle: 'butt',
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: 'miter',
+        pointBorderColor: "rgba(75,192,192,1)",
+        pointBackgroundColor: "#fff",
+        pointBorderWidth: 5,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: "rgba(75,192,192,1)",
+        pointHoverBorderColor: "rgba(220,220,220,1)",
+        pointHoverBorderWidth: 2,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data : electricity_cost_2010_data,
+        spanGaps: false
+        
+    }],
+    options: {
+      scaleShowValues: true,
+        scales: {
+          yAxes: [{
+            ticks: {
+            }
+          }],
+          xAxes: [{
+            barPercentage: 0,
+            categoryPercentage: 0,
+            ticks: {
+              min: 0,
+              max: 51,
+              stepSize: 1,
+              autoSkip: false
+            }
+          }]
+        }
+      }
+  };
+
   // create the chart using the chart canvas
-  var chart = new Chart(ctx, {
+  var chart = new Chart(ctx1, {
     type: 'bar',
     data: chartData,
+  });
+
+  // create the chart using the chart canvas
+  var costChart = new Chart(ctx2, {
+    type: 'bar',
+    data: costChartData,
   });
 
   $('#2010').on('click', function(event) {
     event.preventDefault(); // To prevent following the link (optional)
     chartData.datasets[0].data = electricity_2010_data;
     chart.destroy();
-    chart = new Chart(ctx, {
+    costChart.destroy();
+    chart = new Chart(ctx1, {
       type: 'bar',
       data: chartData,
+    });
+    costChartData.datasets[0].data = electricity_cost_2010_data;
+    costChart = new Chart(ctx2, {
+      type: 'bar',
+      data: costChartData,
     });
   });
 
@@ -118,37 +198,61 @@
     event.preventDefault(); // To prevent following the link (optional)
     chartData.datasets[0].data = electricity_2011_data;
     chart.destroy();
-    chart = new Chart(ctx, {
+    costChart.destroy();
+    chart = new Chart(ctx1, {
       type: 'bar',
       data: chartData,
+    });
+    costChartData.datasets[0].data = electricity_cost_2011_data;
+    costChart = new Chart(ctx2, {
+      type: 'bar',
+      data: costChartData,
     });
   });
 
   $('#2012').on('click', function(event) {
     event.preventDefault(); // To prevent following the link (optional)
-        chartData.datasets[0].data = electricity_2012_data;
+    chartData.datasets[0].data = electricity_2012_data;
     chart.destroy();
-    chart = new Chart(ctx, {
+    costChart.destroy();
+    chart = new Chart(ctx1, {
       type: 'bar',
       data: chartData,
+    });
+    costChartData.datasets[0].data = electricity_cost_2012_data;
+    costChart = new Chart(ctx2, {
+      type: 'bar',
+      data: costChartData,
     });
   });
   $('#2013').on('click', function(event) {
     event.preventDefault(); // To prevent following the link (optional)
     chartData.datasets[0].data = electricity_2013_data;
     chart.destroy();
-    chart = new Chart(ctx, {
+    costChart.destroy();
+    chart = new Chart(ctx1, {
       type: 'bar',
       data: chartData,
+    });
+    costChartData.datasets[0].data = electricity_cost_2013_data;
+    costChart = new Chart(ctx2, {
+      type: 'bar',
+      data: costChartData,
     });
   });
   $('#2014').on('click', function(event) {
     event.preventDefault(); // To prevent following the link (optional)
         chartData.datasets[0].data = electricity_2014_data;
     chart.destroy();
-    chart = new Chart(ctx, {
+    costChart.destroy();
+    chart = new Chart(ctx1, {
       type: 'bar',
       data: chartData,
+    });
+    costChartData.datasets[0].data = electricity_cost_2014_data;
+    costChart = new Chart(ctx2, {
+      type: 'bar',
+      data: costChartData,
     });
   });
   </script>

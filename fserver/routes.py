@@ -6,7 +6,7 @@ from energy_analyzer import get_states, get_state_codes, \
 get_total_consumtion, get_total_production, \
 get_total_coal_census, get_total_electricity_census, get_total_fossil_fuel_census, \
 get_total_geothermal_census, get_total_hydropower_census, \
-get_total_natural_gas_census, get_total_lpg_census
+get_total_natural_gas_census, get_total_lpg_census, get_total_coal_cost, get_total_electric_cost
 
 
 @app.route('/')
@@ -75,13 +75,23 @@ def coal_analysis():
 	total_coal_2012 = get_total_coal_census(2012)
 	total_coal_2013 = get_total_coal_census(2013)
 	total_coal_2014 = get_total_coal_census(2014)
+	total_coal_cost_2010 = get_total_coal_cost(2010)
+	total_coal_cost_2011 = get_total_coal_cost(2011)
+	total_coal_cost_2012 = get_total_coal_cost(2012)
+	total_coal_cost_2013 = get_total_coal_cost(2013)
+	total_coal_cost_2014 = get_total_coal_cost(2014)
 
-	return render_template('test.html',states=states,
+	return render_template('coal.html',states=states,
 		total_coal_2010=total_coal_2010,
 		total_coal_2011=total_coal_2011,
 		total_coal_2012=total_coal_2012,
 		total_coal_2013=total_coal_2013,
-		total_coal_2014=total_coal_2014
+		total_coal_2014=total_coal_2014,
+		total_coal_cost_2010=total_coal_cost_2010,
+		total_coal_cost_2011=total_coal_cost_2011,
+		total_coal_cost_2012=total_coal_cost_2012,
+		total_coal_cost_2013=total_coal_cost_2013,
+		total_coal_cost_2014=total_coal_cost_2014
 		)
 
 @app.route('/electricity-analysis')
@@ -93,30 +103,23 @@ def electricity_analysis():
 	total_electricity_2012 = get_total_electricity_census(2012)
 	total_electricity_2013 = get_total_electricity_census(2013)
 	total_electricity_2014 = get_total_electricity_census(2014)
-	print total_electricity_2010
+	total_electricity_cost_2010 = get_total_electric_cost(2010)
+	total_electricity_cost_2011 = get_total_electric_cost(2011)
+	total_electricity_cost_2012 = get_total_electric_cost(2012)
+	total_electricity_cost_2013 = get_total_electric_cost(2013)
+	total_electricity_cost_2014 = get_total_electric_cost(2014)
+	print total_electricity_cost_2014
 	return render_template('electricity.html',states=states,
 		total_electricity_2010=total_electricity_2010,
 		total_electricity_2011=total_electricity_2011,
 		total_electricity_2012=total_electricity_2012,
 		total_electricity_2013=total_electricity_2013,
-		total_electricity_2014=total_electricity_2014
-		)
-
-@app.route('/geothermal-analysis')
-def geothermal_analysis():
-	states = get_state_codes()
-	# get total coal, parse to int and calculate the total base on population
-	total_geothermal_2010 = get_total_geothermal_census(2010)
-	total_geothermal_2011 = get_total_geothermal_census(2011)
-	total_geothermal_2012 = get_total_geothermal_census(2012)
-	total_geothermal_2013 = get_total_geothermal_census(2013)
-	total_geothermal_2014 = get_total_geothermal_census(2014)
-	return render_template('geothermal_energy.html',states=states,
-		total_geothermal_2010=total_geothermal_2010,
-		total_geothermal_2011=total_geothermal_2011,
-		total_geothermal_2012=total_geothermal_2012,
-		total_geothermal_2013=total_geothermal_2013,
-		total_geothermal_2014=total_geothermal_2014
+		total_electricity_2014=total_electricity_2014,
+		total_electricity_cost_2010=total_electricity_cost_2010,
+		total_electricity_cost_2011=total_electricity_cost_2011,
+		total_electricity_cost_2012=total_electricity_cost_2012,
+		total_electricity_cost_2013=total_electricity_cost_2013,
+		total_electricity_cost_2014=total_electricity_cost_2014
 		)
 
 @app.route('/fossil-analysis')
@@ -135,6 +138,26 @@ def fossil_analysis():
 		total_fossil_fuel_2013=total_fossil_fuel_2013,
 		total_fossil_fuel_2014=total_fossil_fuel_2014
 		)
+
+
+
+@app.route('/geothermal-analysis')
+def geothermal_analysis():
+	states = get_state_codes()
+	# get total coal, parse to int and calculate the total base on population
+	total_geothermal_2010 = get_total_geothermal_census(2010)
+	total_geothermal_2011 = get_total_geothermal_census(2011)
+	total_geothermal_2012 = get_total_geothermal_census(2012)
+	total_geothermal_2013 = get_total_geothermal_census(2013)
+	total_geothermal_2014 = get_total_geothermal_census(2014)
+	return render_template('geothermal_energy.html',states=states,
+		total_geothermal_2010=total_geothermal_2010,
+		total_geothermal_2011=total_geothermal_2011,
+		total_geothermal_2012=total_geothermal_2012,
+		total_geothermal_2013=total_geothermal_2013,
+		total_geothermal_2014=total_geothermal_2014
+		)
+
 
 @app.route('/hydro-power-analysis')
 def hydro_analysis():

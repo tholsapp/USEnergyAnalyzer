@@ -23,17 +23,21 @@
 
 
   <!-- bar chart canvas element -->
-   <canvas id="totalCoal" width="900" height="400">
-   </canvas>
+  <canvas id="totalCoal" width="900" height="400"></canvas>
+  <p class="text-center" id="caption">The chart is displaying the total coal usage per person</p>
 
-  <p id="caption">The chart is displaying the total coal usage per person</p>
+  <canvas id="totalCoalCost" width="900" height="300"></canvas>
+  <p class="text-center" id="caption">The chart is displaying the total cost of coal per year</p>
+
 
   <script type="text/javascript">
   // Global parameters:
   // do not resize the chart canvas when its container does (keep at 600x400px)
   Chart.defaults.global.responsive = false;
   // get weeksForecastChart canvas by id
-  var ctx = document.getElementById("totalCoal").getContext("2d");
+  var ctx1 = document.getElementById("totalCoal").getContext("2d");
+  var ctx2 = document.getElementById("totalCoalCost").getContext("2d");
+
   var coal_2010_data = [{% for tc in total_coal_2010 %}
                           {{ tc }},
                         {% endfor %}]
@@ -50,10 +54,26 @@
                           {{ tc }},
                         {% endfor %}]
 
+  var coal_cost_2010_data = [{% for tc in total_coal_cost_2010 %}
+                          {{ tc }},
+                        {% endfor %}]
+  var coal_cost_2011_data = [{% for tc in total_coal_cost_2011 %}
+                          {{ tc }},
+                        {% endfor %}]
+  var coal_cost_2012_data = [{% for tc in total_coal_cost_2012 %}
+                          {{ tc }},
+                        {% endfor %}]
+  var coal_cost_2013_data = [{% for tc in total_coal_cost_2013 %}
+                          {{ tc }},
+                        {% endfor %}]
+  var coal_cost_2014_data = [{% for tc in total_coal_cost_2014 %}
+                          {{ tc }},
+                        {% endfor %}]
+
   // define the chart data
   var totalCoalData = {
     labels : [{% for state in states %}
-               "Coal Consumption",
+               "{{ state }}",
               {% endfor %}],
     datasets : [{
         label: 'Coal Consumption',
@@ -98,20 +118,61 @@
         }
       }
   };
+    // define the chart data
+  var totalCoalCostData = {
+    labels : [{% for state in states %}
+               "{{ state }}",
+              {% endfor %}],
+    datasets : [{
+        label: 'Coal Cost',
+        fill: true,
+        lineTension: 0.1,
+        backgroundColor: "rgba(75,192,192,0.4)",
+        borderColor: "rgba(75,192,192,1)",
+        borderCapStyle: 'butt',
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: 'miter',
+        pointBorderColor: "rgba(75,192,192,1)",
+        pointBackgroundColor: "#fff",
+        pointBorderWidth: 5,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: "rgba(75,192,192,1)",
+        pointHoverBorderColor: "rgba(220,220,220,1)",
+        pointHoverBorderWidth: 2,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data : coal_cost_2010_data,
+        spanGaps: false
+        
+    }]
+  };
 
   // create the chart using the chart canvas
-  var coalChart = new Chart(ctx, {
+  var coalChart = new Chart(ctx1, {
     type: 'bar',
     data: totalCoalData,
+  });
+  // create the chart using the chart canvas
+  var coalCostChart = new Chart(ctx2, {
+    type: 'bar',
+    data: totalCoalCostData,
   });
 
   $('#2010').on('click', function(event) {
     event.preventDefault(); // To prevent following the link (optional)
     totalCoalData.datasets[0].data = coal_2010_data;
     coalChart.destroy();
-    coalChart = new Chart(ctx, {
+    coalCostChart.destroy();
+
+    coalChart = new Chart(ctx1, {
       type: 'bar',
       data: totalCoalData,
+    });
+    totalCoalCostData.datasets[0].data = coal_cost_2010_data;
+    coalCostChart = new Chart(ctx2, {
+      type: 'bar',
+      data: totalCoalCostData,
     });
   });
 
@@ -119,37 +180,61 @@
     event.preventDefault(); // To prevent following the link (optional)
     totalCoalData.datasets[0].data = coal_2011_data;
     coalChart.destroy();
-    coalChart = new Chart(ctx, {
+    coalCostChart.destroy();
+    coalChart = new Chart(ctx1, {
       type: 'bar',
       data: totalCoalData,
+    });
+    totalCoalCostData.datasets[0].data = coal_cost_2011_data;
+    coalCostChart = new Chart(ctx2, {
+      type: 'bar',
+      data: totalCoalCostData,
     });
   });
 
   $('#2012').on('click', function(event) {
     event.preventDefault(); // To prevent following the link (optional)
-        totalCoalData.datasets[0].data = coal_2012_data;
+    totalCoalData.datasets[0].data = coal_2012_data;
     coalChart.destroy();
-    coalChart = new Chart(ctx, {
+    coalCostChart.destroy();
+    coalChart = new Chart(ctx1, {
       type: 'bar',
       data: totalCoalData,
+    });
+    totalCoalCostData.datasets[0].data = coal_cost_2012_data;
+    coalCostChart = new Chart(ctx2, {
+      type: 'bar',
+      data: totalCoalCostData,
     });
   });
   $('#2013').on('click', function(event) {
     event.preventDefault(); // To prevent following the link (optional)
     totalCoalData.datasets[0].data = coal_2013_data;
     coalChart.destroy();
-    coalChart = new Chart(ctx, {
+    coalCostChart.destroy();
+    coalChart = new Chart(ctx1, {
       type: 'bar',
       data: totalCoalData,
+    });
+    totalCoalCostData.datasets[0].data = coal_cost_2013_data;
+    coalCostChart = new Chart(ctx2, {
+      type: 'bar',
+      data: totalCoalCostData,
     });
   });
   $('#2014').on('click', function(event) {
     event.preventDefault(); // To prevent following the link (optional)
-        totalCoalData.datasets[0].data = coal_2014_data;
+    totalCoalData.datasets[0].data = coal_2014_data;
     coalChart.destroy();
-    coalChart = new Chart(ctx, {
+    coalCostChart.destroy();
+    coalChart = new Chart(ctx1, {
       type: 'bar',
       data: totalCoalData,
+    });
+    totalCoalCostData.datasets[0].data = coal_cost_2014_data;
+    coalCostChart = new Chart(ctx2, {
+      type: 'bar',
+      data: totalCoalCostData,
     });
   });
   </script>

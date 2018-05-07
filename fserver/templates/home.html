@@ -4,58 +4,65 @@
 {% block content %}
 
 <div class="page-header text-center">
-<h1> United States Energy Analytics 2010 - 2014</h1>
+<h1> United States Energy Analysis 2010 - 2014</h1>
 </div>
-
-	<div>
-		<h2> 
-			CS 122 Final Project
-		</h2>
-	</div>
 	<div>
 		<h2> 
 			Census and Geographic Data
 		</h2>
 		<p>
-			<strong>StateCodes:</strong> The state 2-letter abbreviations. Note that I added "US" for the United States.
+			<strong>StateCodes:</strong><br> 
+			The state 2-letter abbreviations. Note that I added "US" for the United States.
 		</p>
 		<p>
-			<strong>Region:</strong> The number corresponding to the region the state lies within, according to the 2010 census. (1 = Northeast, 2 = Midwest, 3 = South, 4 = West)
+			<strong>Region:</strong><br> 
+			The number corresponding to the region the state lies within, according to the 2010 census. (1 = Northeast, 2 = Midwest, 3 = South, 4 = West)
 		</p>
 		<p>
-			<strong>Division:</strong> The number corresponding to the division the state lies within, according to the 2010 census. (1 = New England, 2 = Middle Atlantic, 3 = East North Central, 4 = West North Central, 5 = South Atlantic, 6 = East South Central, 7 = West South Central, 8 = Mountain, 9 = Pacific)
+			<strong>Division:</strong><br> 
+			The number corresponding to the division the state lies within, according to the 2010 census. (1 = New England, 2 = Middle Atlantic, 3 = East North Central, 4 = West North Central, 5 = South Atlantic, 6 = East South Central, 7 = West South Central, 8 = Mountain, 9 = Pacific)
 		</p>
 		<p>
-			<strong>Coast:</strong> Whether the state shares a border with an ocean. (1 = Yes, 0 = No)
+			<strong>Coast:</strong><br> 
+			Whether the state shares a border with an ocean. (1 = Yes, 0 = No)
 		</p>
 		<p>
-			<strong>Great Lakes:</strong> Whether the state shares a border with a great lake. (1 = Yes, 0 = No)
+			<strong>Great Lakes:</strong><br> 
+			Whether the state shares a border with a great lake. (1 = Yes, 0 = No)
 		</p>
 		<p>
-		    <strong>CENSUS2010POP:</strong> 4/1/2010 resident total Census 2010 population
+		    <strong>CENSUS2010POP:</strong><br> 
+		    4/1/2010 resident total Census 2010 population
 		</p>
 		<p>
-		    <strong>POPESTIMATE{year}:</strong> 7/1/{year} resident total population estimate
+		    <strong>POPESTIMATE{year}:</strong><br> 
+		    7/1/{year} resident total population estimate
 		</p>
 		<p>
-		    <strong>RBIRTH{year}:</strong> Birth rate in period 7/1/{year - 1} to 6/30/{year}
+		    <strong>RBIRTH{year}:</strong><br> 
+		    Birth rate in period 7/1/{year - 1} to 6/30/{year}
 		</p>
 
 		<p>
-		    <strong>RDEATH{year}:</strong> Death rate in period 7/1/{year - 1} to 6/30/{year}
+		    <strong>RDEATH{year}:</strong><br> 
+		    Death rate in period 7/1/{year - 1} to 6/30/{year}
 		</p>
 
 		<p>
-			<strong>RNATURALINC{year}:</strong> Natural increase rate in period 7/1/{year - 1} to 6/30/{year}
+			<strong>RNATURALINC{year}:</strong><br> 
+			Natural increase rate in period 7/1/{year - 1} to 6/30/{year}
 		</p>
 		<p>
-		    <strong>RINTERNATIONALMIG{year}:</strong> Net international migration rate in period 7/1/{year - 1} to 6/30/{year}
+		    <strong>RINTERNATIONALMIG{year}:</strong><br> 
+		    Net international migration rate in period 7/1/{year - 1} to 6/30/{year}
 		</p>
 		<p>
-		    <strong>RDOMESTICMIG{year}:</strong> Net domestic migration rate in period 7/1/{year - 1} to 6/30/{year}
+		    <strong>RDOMESTICMIG{year}:</strong><br> 
+		    Net domestic migration rate in period 7/1/{year - 1} to 6/30/{year}
 		</p>
 		<p>
-			<strong>RNETMIG{year}:</strong> Net migration rate in period 7/1/{year - 1} to 6/30/{year}
+			<strong>RNETMIG{year}:</strong><br>
+			Net migration rate in period 7/1/{year - 1} to 6/30/{year}
 		</p>
 	</div>
 	<div>
@@ -63,56 +70,116 @@
 			Energy Data	
 		</h2>
 		<p>
-			<strong>TotalC{year}:</strong> Total energy consumption in billion BTU in given year.
+			<strong>TotalC{year}:</strong><br> 
+			Total energy consumption in billion BTU in given year.
 		</p>
 		<p>
-		    <strong>TotalP{year}:</strong> Total energy production in billion BTU in given year.
+		    <strong>TotalP{year}:</strong><br> 
+		    Total energy production in billion BTU in given year.
 		</p>
 		<p>
-		    <strong>TotalE{year}:</strong> Total Energy expenditures in million USD in given year.
+		    <strong>TotalE{year}:</strong><br> 
+		    Total Energy expenditures in million USD in given year.
 		</p>
 		<p>
-		    <strong>TotalPrice{year}:</strong> Total energy average price in USD/million BTU in given year.
+		    <strong>TotalPrice{year}:</strong><br> 
+		    Total energy average price in USD/million BTU in given year.
 		</p>
 		<p>
-		    <strong>TotalC{first year}–{second year}:</strong> The first year’s total energy consumption divided by the second year’s total energy consumption, times 100. (The percent change between years in total energy consumption.)
+		    <strong>TotalC{first year}–{second year}:</strong><br> 
+		    The first year’s total energy consumption divided by the second year’s total energy consumption, times 100. (The percent change between years in total energy consumption.)
 		</p>
 		<p>
-		    <strong>TotalP{first year}–{second year}:</strong> The first year’s total energy production divided by the second year’s total energy production, times 100. (The percent change between years in total energy production.)
+		    <strong>TotalP{first year}–{second year}:</strong><br>
+		    The first year’s total energy production divided by the second year’s total energy production, times 100. (The percent change between years in total energy production.)
 		</p>
 		<p>
-		    <strong>TotalE{first year}–{second year}:</strong> The first year’s total energy expenditure divided by the second year’s total energy expenditure, times 100. (The percent change between years in total energy expenditure.)
+		    <strong>TotalE{first year}–{second year}:</strong><br> 
+		    The first year’s total energy expenditure divided by the second year’s total energy expenditure, times 100. (The percent change between years in total energy expenditure.)
 		</p>
 		<p>
-		    <strong>TotalPrice{first year}–{second year}:</strong> The first year’s total energy average price divided by the second year’s total energy average price, times 100. (The percent change between years in total energy average price.)
+		    <strong>TotalPrice{first year}–{second year}:</strong><br> 
+		    The first year’s total energy average price divided by the second year’s total energy average price, times 100. (The percent change between years in total energy average price.)
 		</p>
 
 
-		    <p><strong>BiomassC{year}:</strong> Biomass total consumption in billion BTU in given year.</p>
-		    <p><strong>CoalC{year}:</strong> Coal total consumption in billion BTU in given year.</p>
-		    <p><strong>CoalP{year}:</strong> Coal total production in billion BTU in given year.</p>
-		    <p><strong>CoalE{year}:</strong> Coal total expenditures in million USD in given year.</p>
-		    <p><strong>CoalPrice{year}:</strong> Coal average price in USD per million BTU in given year.</p>
-		    <p><strong>ElecC{year}:</strong> Electricity total consumption in billion BTU in given year.</p>
-		    <p><strong>ElecE{year}:</strong> Electricity total expenditures in million USD in given year.</p>
-		    <p><strong>ElecPrice{year}:</strong> Electricity average price in USD per million BTU in given year.</p>
-		    <p><strong>FossFuelC{year}:</strong> Fossil fuels total consumption in billion BTU in given year.</p>
-		    <p><strong>GeoC{year}:</strong> Geothermal energy total consumption in billion BTU in given year.</p>
-		    <p><strong>GeoP{year}:</strong> Geothermal energy net generation in the electric power sector in million kilowatt hours in given year.</p>
-		    <p><strong>HydroC{year}:</strong> Hydropower total consumption in billion BTU in given year.</p>
-		    <p><strong>HydroP{year}:</strong> Hydropower total net generation in million kilowatt hours in given year.</p>
-		    <p><strong>NatGasC{year}:</strong> Natural gas total consumption (including supplemental gaseous fuels) in billion BTU in given year.</p>
-		    <p><strong>NatGasE{year}:</strong> Natural gas total expenditures in million USD in given year.</p>
-		    <p><strong>NatGasPrice{year}: Natural gas average price in USD per million BTU in given year.</p>
-		    <p><strong>LPGC{year}:</strong> LPG total consumption in billion BTU in given year.</p>
-		    <p><strong>LPGE{year}:</strong> LPG total expenditures in million USD in given year.</p>
+		    <p>
+		    	<strong>BiomassC{year}:</strong><br>
+		    	Biomass total consumption in billion BTU in given year.
+		    </p>
+		    <p>
+		    	<strong>CoalC{year}:</strong><br> 
+		    	Coal total consumption in billion BTU in given year.
+		    </p>
+		    <p>
+		    	<strong>CoalP{year}:</strong><br> 
+		    	Coal total production in billion BTU in given year.
+		    </p>
+		    <p>
+		    	<strong>CoalE{year}:</strong><br> 
+		    	Coal total expenditures in million USD in given year.
+		    </p>
+		    <p>
+		    	<strong>CoalPrice{year}:</strong><br>
+		    	Coal average price in USD per million BTU in given year.
+		    </p>
+		    <p>
+		    	<strong>ElecC{year}:</strong><br> 
+		    	Electricity total consumption in billion BTU in given year.
+		    </p>
+		    <p>
+		    	<strong>ElecE{year}:</strong><br> 
+		    	Electricity total expenditures in million USD in given year.
+		    </p>
+		    <p>
+		    	<strong>ElecPrice{year}:</strong><br> 
+		    	Electricity average price in USD per million BTU in given year.
+		    </p>
+		    <p>
+		    	<strong>FossFuelC{year}:</strong><br> 
+		    	Fossil fuels total consumption in billion BTU in given year.
+		    </p>
+		    <p>
+		    	<strong>GeoC{year}:</strong><br> 
+		    	Geothermal energy total consumption in billion BTU in given year.
+		    </p>
+		    <p>
+		    	<strong>GeoP{year}:</strong><br> 
+		    Geothermal energy net generation in the electric power sector in million kilowatt hours in given year.</p>
+		    <p>
+		    	<strong>HydroC{year}:</strong><br> 
+		    	Hydropower total consumption in billion BTU in given year.
+		    </p>
+		    <p>
+		    	<strong>HydroP{year}:</strong><br> 
+		    Hydropower total net generation in million kilowatt hours in given year.</p>
+		    <p>
+		    	<strong>NatGasC{year}:</strong><br> 
+		    	Natural gas total consumption (including supplemental gaseous fuels) in billion BTU in given year.
+		    </p>
+		    <p>
+		    	<strong>NatGasE{year}:</strong><br>
+		    	 Natural gas total expenditures in million USD in given year.
+		    </p>
+		    <p>
+		    	<strong>NatGasPrice{year}:</strong>
+		    	 Natural gas average price in USD per million BTU in given year.
+		    	</p>
+		    <p>
+		    	<strong>LPGC{year}:</strong><br> 
+		    	LPG total consumption in billion BTU in given year.
+		    </p>
+		    <p>
+		    	<strong>LPGE{year}:</strong><br>
+		    	 LPG total expenditures in million USD in given year.
+		    </p>
 		<p>
-		    <strong>LPGPrice{year}:</strong> LPG average price in USD per million BTU in given year.
+		    <strong>LPGPrice{year}:</strong><br>
+		     LPG average price in USD per million BTU in given year.
 		</p>
 		<p>
-		    <strong>Notes:</strong> 
+		    <strong>Notes:</strong><br>
 		    BTU stands for British Thermal Unit and is a unit of measurement for energy. One BTU is equal to the amount of energy used to raise the temperature of one pound of water on degree Fahrenheit. One BTU is about equivalent to burning a match 
-
 		</p>
 	</div>
 	<div>
@@ -120,10 +187,12 @@
 			Economic Data
 		</h2>
 		<p>
-			<strong>GDP{year}{quarter}:</strong> The GDP in the provided quarter of the given year (in million USD).
+			<strong>GDP{year}{quarter}:</strong><br>
+			The GDP in the provided quarter of the given year (in million USD).
 		</p>
 		<p>	
-		    <strong>GDP{year}:</strong> The average GDP throughout the given year (in million USD).
+		    <strong>GDP{year}:</strong><br>
+		    The average GDP throughout the given year (in million USD).
 		</p>
 	</div>
 </div>

@@ -22,17 +22,15 @@
   </div>
 
  <!-- bar chart canvas element -->
-   <canvas id="chart" width="900" height="400">
-   </canvas>
-
-  <p id="caption">The chart is displaying the total fossil fuel usage per person</p>
+  <canvas id="chart" width="900" height="400"></canvas>
+  <p class="text-center" id="caption">The chart is displaying the total fossil fuel usage per person</p>
 
   <script type="text/javascript">
   // Global parameters:
   // do not resize the chart canvas when its container does (keep at 600x400px)
   Chart.defaults.global.responsive = false;
   // get weeksForecastChart canvas by id
-  var ctx = document.getElementById("chart").getContext("2d");
+  var ctx1 = document.getElementById("chart").getContext("2d");
   var fossil_fuel_2010_data = [{% for tc in total_fossil_fuel_2010 %}
                           {{ tc }},
                         {% endfor %}]
@@ -48,6 +46,7 @@
   var fossil_fuel_2014_data = [{% for tc in total_fossil_fuel_2014 %}
                           {{ tc }},
                         {% endfor %}]
+
 
   // define the chart data
   var chartData = {
@@ -98,8 +97,9 @@
       }
   };
 
+
   // create the chart using the chart canvas
-  var chart = new Chart(ctx, {
+  var chart = new Chart(ctx1, {
     type: 'bar',
     data: chartData,
   });
@@ -108,7 +108,7 @@
     event.preventDefault(); // To prevent following the link (optional)
     chartData.datasets[0].data = fossil_fuel_2010_data;
     chart.destroy();
-    chart = new Chart(ctx, {
+    chart = new Chart(ctx1, {
       type: 'bar',
       data: chartData,
     });
@@ -118,7 +118,7 @@
     event.preventDefault(); // To prevent following the link (optional)
     chartData.datasets[0].data = fossil_fuel_2011_data;
     chart.destroy();
-    chart = new Chart(ctx, {
+    chart = new Chart(ctx1, {
       type: 'bar',
       data: chartData,
     });
@@ -128,7 +128,7 @@
     event.preventDefault(); // To prevent following the link (optional)
         chartData.datasets[0].data = fossil_fuel_2012_data;
     chart.destroy();
-    chart = new Chart(ctx, {
+    chart = new Chart(ctx1, {
       type: 'bar',
       data: chartData,
     });
@@ -137,7 +137,7 @@
     event.preventDefault(); // To prevent following the link (optional)
     chartData.datasets[0].data = fossil_fuel_2013_data;
     chart.destroy();
-    chart = new Chart(ctx, {
+    chart = new Chart(ctx1, {
       type: 'bar',
       data: chartData,
     });
@@ -146,7 +146,7 @@
     event.preventDefault(); // To prevent following the link (optional)
         chartData.datasets[0].data = fossil_fuel_2014_data;
     chart.destroy();
-    chart = new Chart(ctx, {
+    chart = new Chart(ctx1, {
       type: 'bar',
       data: chartData,
     });
